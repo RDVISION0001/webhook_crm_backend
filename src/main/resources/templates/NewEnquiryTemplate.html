@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Enquiry update</title>
+</head>
+
+<body style="
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    ">
+
+</style>
+<div style="
+        max-width: 900px;
+        margin: auto;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      ">
+    <!-- Header Section -->
+    <div style="
+          padding: 5px 0 0 0;
+          padding: 5px;
+        ">
+        <table role="presentation" style="width: 100%; padding: 10px 0;">
+            <tr>
+                <td style="text-align: center; padding: 5px;">
+                    <img th:src="${images.logo}" src="https://1drv.ms/i/c/dc6e19f9d9ccada8/IQQz81f99Kh0TJOKKXgaB4FOAZ64vAOiqqWD-98ILDwfVE0?width=250&height=80"
+                         alt="Logo" style="max-width: 100%; height: auto;" />
+                </td>
+
+            </tr>
+        </table>
+        <div>
+            <img class="header_image"
+                 th:src="${images.topBanner}"
+                 src="https://1drv.ms/i/c/dc6e19f9d9ccada8/IQRlq0wnaixwTZ-WTGO64ZWpASw2p2lUNsgLL2veKHS4lAU?width=1920&height=468"
+                 style="width: 100%; height: auto; margin: 5px 0 0 0; display: block;" alt="Header Image" />
+        </div>
+
+
+    </div>
+
+    <!-- Main Content -->
+    <div style="padding: 0 5px">
+        <div style="font-size: 16px">Dear <strong th:text="${company.customer}">Chiku</strong>,</div>
+        <div style="font-size: 14px; line-height: 1.5">
+            Email:
+            <a href="mailto:adschiku@gmail.com" style="color: #0099cc" th:text="${company.senderEmail}">adschiku@gmail.com</a>
+        </div>
+        <p style="margin: 15px 0; font-size: 16px; line-height: 1.5" th:text="'Treatment: ' + ${product.treatment}">
+            It provides relief from the discomfort associated with acute, painful
+            musculoskeletal conditions such as rigidity, tension, stiffness, and
+            muscle spasms.
+        </p>
+        <p style="
+            margin: 15px 0;
+            font-size: 16px;
+            color: #ff9900;
+            line-height: 1.5;
+          ">
+            ✨Your enquiry about <strong th:text="${product.name}">Pain O Soma 350Mg</strong> has set the
+            stage for something extraordinary, and we're here to roll out the
+            carpet of excitement just for you.✨
+        </p>
+        <p style="text-align: center; font-size: 18px; font-weight: 700">
+            **Get Ready to be Amazed**
+        </p>
+
+        <div
+                class="sm:flex sm:justify-between sm:items-start sm:space-x-4 sm:flex-wrap bg-white p-4 rounded-lg shadow-md">
+            <!-- First Column: Product Image -->
+            <div style="text-align:center;">
+                <img th:src="${product.image}" alt="Product Image" style="max-height:300px; width:auto" />
+            </div>
+
+            <!-- Second Column: Product Details Table -->
+            <div class="sm:w-1/2 w-full" style="padding-left: 5px; padding-right: 5px;">
+                <table class="w-full text-sm border-spacing-2 text-left"
+                       style="border-collapse: collapse; width: 100%; border: 1px solid #ccc;">
+                    <tbody>
+                    <tr>
+                        <td class="font-bold" style="border: 1px solid #ccc; padding: 8px;">Name:</td>
+                        <td th:text="${product.name}" style="border: 1px solid #ccc; padding: 8px;">Cenforce</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold" style="border: 1px solid #ccc; padding: 8px;">Strength:</td>
+                        <td th:text="${product.strength}" style="border: 1px solid #ccc; padding: 8px;">350Mg</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold" style="border: 1px solid #ccc; padding: 8px;">Packaging Size:</td>
+                        <td th:text="${product.size}" style="border: 1px solid #ccc; padding: 8px;">10*10</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold" style="border: 1px solid #ccc; padding: 8px;">Brand:</td>
+                        <td th:text="${product.brand}" style="border: 1px solid #ccc; padding: 8px;">HAB Pharma</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold" style="border: 1px solid #ccc; padding: 8px;">Composition:</td>
+                        <td th:text="${product.composition}" style="border: 1px solid #ccc; padding: 8px;">Carisoprodol</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold" style="border: 1px solid #ccc; padding: 8px;">Treatment:</td>
+                        <td th:text="${product.treatment}" style="border: 1px solid #ccc; padding: 8px;">Muscle Relaxer</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold" style="border: 1px solid #ccc; padding: 8px;">Form:</td>
+                        <td th:text="${product.form}" style="border: 1px solid #ccc; padding: 8px;">Tablet</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div style="text-align: center; margin: 20px 0; font-family: Arial, sans-serif;">
+            <p style="font-size: 18px; line-height: 1.5; color: #333;">
+                Order <span th:text="${product.name}" style="font-weight: bold;">Pain O Soma 350Mg</span> Tablet
+                Today!
+            </p>
+            <div style="margin: 20px auto; max-width: 80%;">
+                <table class="TablePrice" style="
+        width: 100%;
+        font-size: 16px;
+        border-collapse: collapse;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+      ">
+                    <thead>
+                    <tr style="background-color: #0099cc; color: white;">
+                        <th style="padding: 12px; border: 1px solid #ddd;">Quantity</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Price</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="price : ${priceList}"
+                        style="text-align: center; background-color: #fff; color: #555;">
+                        <td style="padding: 10px; border: 1px solid #ddd;">
+                            <span th:text="${price.quantity} + ' ' + ${price.unit}">100 pills</span>
+                        </td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">
+                            <span th:text="${price.currency} + ' ' + ${price.amount}">$50.00</span>
+                        </td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">
+                            <a th:href="${price.paymentLink}" style="
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #0099cc;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                font-weight: bold;
+              ">
+                                Buy Now
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Additional Content -->
+        <div style="padding: 20px">
+            <p style="font-size: 16px; line-height: 1.5">
+                Hey, why just stop at jaw-dropping prices when you can kick back,
+                relax, and order with the ease of a superhero?
+            </p>
+            <p style="font-size: 16px; line-height: 1.5">
+                <strong>Imagine this:</strong> you're chilling at home, sipping your
+                favorite beverage, and voila! Your order is placed without even
+                stepping outside. Yes, you heard that right - a world of convenience
+                awaits at your fingertips.
+            </p>
+            <div style="text-align: center; margin: 10px 0">
+                <img  th:src="${images.m1}" src="https://1drv.ms/i/c/dc6e19f9d9ccada8/IQS1YcCRjc1lRpYyI8bWCKQhAQ3dGs4fNlEmMI82Z_sCUOU?width=1024"
+                     alt="Service Image 1" style="height:auto; width:250px" />
+
+                <img th:src="${images.m2}" src="https://1drv.ms/i/c/dc6e19f9d9ccada8/IQQ-tlO_hTMUQJWU9mXGyplSAT52L36g18CwboVbyMVeweU?width=1024"
+                     alt="Service Image 2" style="height:auto; width:250px" />
+
+                <img  th:src="${images.m3}" src="https://1drv.ms/i/c/dc6e19f9d9ccada8/IQS7smuITV9FQ7EuP0q7u3uQAQYiAkFJwnOQBeAprK7D2HY?width=1024"
+                     alt="Service Image 3" style="height:auto; width:250px" />
+            </div>
+            <p style="font-size: 16px; line-height: 1.5">
+                But that's not all - brace yourself for the grand finale! In a
+                whirlwind of <strong>10-12 business days</strong>, your package will
+                land on your doorstep, wrapped in a cloak of discretion that would
+                make even James Bond proud.
+            </p>
+            <div style="text-align: center; margin: 10px 0">
+                <img th:src="${images.m4}" src="https://1drv.ms/i/c/dc6e19f9d9ccada8/IQSK0B2ZoPRQRZx5xnN_I23iAakynsFluu3Vtb_iGuqHKs0?width=1024"
+                     alt="Service Image 4" style="height:auto; width:250px" />
+                <img th:src="${images.m5}" src="https://1drv.ms/i/c/dc6e19f9d9ccada8/IQS0tHxNNyuiTahsJmq9ZNwWATaiOETibwFNEdnMqesAxds?width=1024"
+                     alt="Service Image 5" style="height:auto; width:250px" />
+                <img th:src="${images.m6}" src="https://1drv.ms/i/c/dc6e19f9d9ccada8/IQQY60VxfNvEQK0VB-kL380VARgwqJEKwBXapt4U818zpOI?width=1024"
+                     alt="Service Image 6" style="height:auto; width:250px" />
+            </div>
+            <p style="font-size: 16px; line-height: 1.5">
+                Now, for the pièce de résistance: within a mere 24 hours of
+                confirming your order, I'll personally slide into your inbox with a
+                golden key - your very own tracking link. You'll watch in awe as
+                your package dances its way to you, live and direct on
+                <strong>Track17.com</strong>. It's as easy as clicking the link
+                below.
+            </p>
+            <img th:src="${images.tracking}" src="https://1drv.ms/i/c/dc6e19f9d9ccada8/IQQbGTOpzyE2SJG9faBT4llfAQoCRDA-m2n_BZfhx5O7-w0?width=2358&height=946"
+                 alt="Image Loading"
+                 style="width: 100%; max-width: 880px; height: auto; display: block; border: 0;" />
+        </div>
+        <table style="width: 100%; border-collapse: collapse; text-align: center;">
+            <tr>
+                <td style="padding: 10px;">
+                    <img th:src="${images.review}" src="https://1drv.ms/i/c/dc6e19f9d9ccada8/IQSfOZsHusTKSaULxov12i6sAcqIgN3Phi4PKA647pTfQUI?width=1024"
+                         alt="Image Loading"
+                         style="width: 100%; max-width: 880px; height: auto; display: block; border: 0;" />
+                </td>
+            </tr>
+        </table>
+        <table style="width: 100%; border-collapse: collapse; text-align: center;">
+            <tr>
+                <td style="padding: 10px;">
+                    <img th:src="${images.testimonial}" src="https://1drv.ms/i/c/dc6e19f9d9ccada8/IQSTc4Rr9Pp4Qa-88pjqAav0AfHDiHd-s-2C7vn3pYqG65U?width=1024"
+                         alt="Image Loading"
+                         style="width: 100%; max-width: 880px; height: auto; display: block; border: 0;" />
+                </td>
+            </tr>
+        </table>
+
+        <!-- Footer Section -->
+        <div style="
+            text-align: center;
+            background-color: #0099cc;
+            color: white;
+            padding: 10px;
+            font-size: 14px;
+          ">
+            <p>
+                We're just an email away! Feel free to reach out to us anytime at
+                help@buymed24.com
+            </p>
+            <p>BuyMed24.com - Your Ultimate Pharmacy Partner</p>
+        </div>
+    </div>
+    <div style="background-color: #666666; color: #797373; padding: 20px; text-align: center;">
+        <div
+                style="max-width: 600px; margin: 0 auto; background-color: #686565; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+
+            <!-- Footer Content -->
+            <div
+                    style="font-family: Arial, sans-serif; padding: 20px; color: #333; background-color: #f7f7f7; width: 100%; max-width: 600px; margin: auto; border: 1px solid #e0e0e0; border-radius: 5px;">
+                <!-- Logo -->
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img th:src="${images.logo}" src="https://1drv.ms/i/c/dc6e19f9d9ccada8/IQQz81f99Kh0TJOKKXgaB4FOAZ64vAOiqqWD-98ILDwfVE0?width=250&height=80"
+                         alt="Logo" style="height: 50px; width: auto;">
+                </div>
+
+
+                <table
+                        style="width: 100%; max-width: 600px; font-family: Arial, sans-serif; color: #333; border-top: 2px solid #007bff; padding-top: 10px;">
+                    <!--                    &lt;!&ndash; Name and Position &ndash;&gt;-->
+                    <!--                    <tr>-->
+                    <!--&lt;!&ndash;                        <td style="font-size: 16px; font-weight: bold;" th:text="${user.name}">Mike Alpha</td>&ndash;&gt;-->
+                    <!--                    </tr>-->
+                    <tr>
+                        <td style="font-size: 14px; color: #555;">Customer Support Manager</td>
+                    </tr>
+
+                    <!-- Email and Contact Information -->
+                    <tr>
+                        <td style="padding: 10px 0;">
+                            <a href="mailto:enquiry@buymed24.com"
+                               style="color: #007bff; text-decoration: none;">enquiry@buymed24.com</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 14px; color: #555;">Call Us: +1 318-936-6091</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 0;">
+                            <a href="https://buymed24.com"
+                               style="color: #007bff; text-decoration: none; font-size: 14px;">
+                                www.buymed24.com
+                            </a>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td style="padding-bottom: 8px;">
+                                <a href="https://mail.google.com/mail" target="_blank" style="color: #0099cc; text-decoration: none;">
+                                    help@buymed24.com
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Call At:</span>
+                                <span style="font-size: 10px; margin-left: 4px;">+1 318-936-6091</span>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td style="font-size: 12px; color: #555; padding-top: 10px;">
+                            M/S-RD VISION, 221101<br>
+                            Rauna Khurd Cholapur, Varanasi, 221101
+                        </td>
+                    </tr>
+
+                    <!-- Divider and Disclaimer -->
+                    <!--                    <tr>-->
+                    <!--                        <td style="padding-top: 10px; font-size: 12px; color: #888; border-top: 1px solid #ddd;">-->
+                    <!--                            <p style="margin: 5px 0;">This email and any attachments are confidential. If you are not the intended recipient, please delete it and notify the sender immediately.</p>-->
+                    <!--                        </td>-->
+                    <!--                    </tr>-->
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>

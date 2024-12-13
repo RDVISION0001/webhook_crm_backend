@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Enquiry</title>
+</head>
+
+<body style="font-family: Arial, sans-serif; background-color: #f0f4f8; margin: 0; padding: 20px; color: #333;">
+<table width="100%" style="max-width: 800px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+    <tr>
+        <td style="padding: 20px;">
+            <!-- Header Section -->
+            <div style="background-color: #ff6f61; color: white; padding: 15px; text-align: center; border-radius: 8px; margin-bottom: 20px;">
+                <h1 style="margin: 0; font-size: 24px;">Your Enquiry</h1>
+            </div>
+
+            <!-- Company and Customer Information Section -->
+            <div style="padding: 20px; background-color: #e8f5e9; border-radius: 8px; margin-bottom: 20px;">
+                <table width="100%">
+                    <tr>
+                        <td style="width: 50%;">
+                            <strong>Company Name:</strong> <span th:text="${companyName}">Company Name</span><br>
+                            <strong>Address:</strong> <span th:text="${companyAddress}">Company Address</span><br>
+                            <strong>Email:</strong> <span th:text="${companyEmail}">Company Email</span><br>
+                            <strong>Phone:</strong> <span th:text="${companyPhone}">Company Phone</span>
+                        </td>
+                        <td style="width: 50%;">
+                            <strong>Name:</strong> <span th:text="${customerName}">Customer Name</span><br>
+                            <strong>Address:</strong> <span th:text="${customerAddress}">Customer Address</span><br>
+                            <strong>Mobile:</strong> <span th:text="${customerMobile}">Customer Mobile</span><br>
+                            <strong>Email:</strong> <span th:text="${customerEmail}">Customer Email</span><br>
+                            <strong>Enquiry:</strong> <span th:text="${customerEnquiry}">Customer Enquiry</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Introduction paragraph -->
+            <p th:text="${text}" style="font-size: 14px; line-height: 1.6; color: #555; margin-bottom: 20px;">
+                Text
+            </p>
+
+            <!-- Product List Section -->
+            <div style="background-color: #e8f5e9; border-radius: 8px; margin-bottom: 20px;">
+                <h2 style="text-align: center; background-color: #ff6f61; color: white; padding: 15px; border-radius: 8px; margin: 0;">Suggested Product Details</h2>
+                <table width="100%" style="border-collapse: collapse; margin-top: 15px;">
+                    <thead>
+                    <tr style="background-color: #ff6f61; color: white;">
+                        <th style="padding: 10px; text-align: left; border: 1px solid #ccc;">Product Image</th>
+                        <th style="padding: 10px; text-align: left; border: 1px solid #ccc;">Product Name</th>
+                        <th style="padding: 10px; text-align: left; border: 1px solid #ccc;">Brand</th>
+                        <th style="padding: 10px; text-align: left; border: 1px solid #ccc;">Composition</th>
+                        <th style="padding: 10px; text-align: left; border: 1px solid #ccc;">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody th:each="product : ${products}">
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;">
+                            <img th:src="@{'https://rdvision.in/images/getProductImage/' + ${product.productId}}"
+                                 alt="Product Image"
+                                 style="max-width: 200px; border-radius: 8px; margin-right: 15px;">                        </td>
+                        <td style="padding: 10px; border: 1px solid #ccc;" th:text="${product.name}">Product Name</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;" th:text="${product.brand}">Product Brand</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;" th:text="${product.composition}">Product Composition</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;" th:text="${product.description}">Product Description</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
+</body>
+
+</html>
