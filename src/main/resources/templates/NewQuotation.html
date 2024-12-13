@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotation from R&D Vision</title>
+</head>
+
+<body style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px;">
+
+<!-- Quotation Card -->
+<div
+        style="border: 1px solid #ddd; border-radius: 8px; background-color: #fff; max-width: 800px; margin: auto; padding: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+
+    <div style="
+        max-width: 900px;
+        margin: auto;
+        background: white;
+        border-radius: 8px;
+        /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+        overflow: hidden;
+      ">
+        <!-- Header Section -->
+        <div style="
+          padding: 5px 0 0 0;
+          padding: 5px;
+        ">
+            <table role="presentation" style="width: 100%; padding: 10px 0;">
+                <tr>
+                    <td style="text-align: center; padding: 5px;">
+                        <img src="https://rdvision.in/images/getTempImage/2" alt="Logo"
+                             style="max-width: 100%; height: auto;" />
+                    </td>
+
+                </tr>
+            </table>
+            <div>
+                <img class="header_image" src="https://rdvision.in/images/getTempImage/3"
+                     style="width: 100%; height: auto; margin: 5px 0 0 0; display: block;" alt="Header Image" />
+            </div>
+
+
+        </div>
+        <h2 style="color: #2c3e50;" th:text="Dear+ ' ' + ${company.customer}">Dear Customer,</h2>
+        <p style="font-size: 16px; line-height: 1.6; color: #555;">Thank you for your inquiry. Below is the
+            quotation
+            for the products you requested:</p>
+
+        <div th:each="product : ${products}">
+            <div
+                    class="sm:flex sm:justify-between sm:items-start sm:space-x-4 sm:flex-wrap bg-white p-4 rounded-lg shadow-md">
+                <!-- First Column: Product Image -->
+                <div style="text-align:center;">
+                    <img th:src="${product.image}" alt="Product Image" style="max-height:300px; width:auto" />
+                </div>
+
+                <!-- Second Column: Product Details Table -->
+                <div class="sm:w-1/2 w-full" style="padding-left: 5px; padding-right: 5px;">
+                    <table class="w-full text-sm border-spacing-2 text-left"
+                           style="border-collapse: collapse; width: 100%; border: 1px solid #ccc;">
+                        <tbody>
+                        <tr>
+                            <td class="font-bold" style="border: 1px solid #ccc; padding: 8px;">Name:</td>
+                            <td th:text="${product.name}" style="border: 1px solid #ccc; padding: 8px;">Cenforce
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="border: 1px solid #ccc; padding: 8px;">Strength:</td>
+                            <td th:text="${product.strength}" style="border: 1px solid #ccc; padding: 8px;">
+                                350Mg
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="border: 1px solid #ccc; padding: 8px;">Packaging Size:
+                            </td>
+                            <td th:text="${product.size}" style="border: 1px solid #ccc; padding: 8px;">10*10
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="border: 1px solid #ccc; padding: 8px;">Brand:</td>
+                            <td th:text="${product.brand}" style="border: 1px solid #ccc; padding: 8px;">HAB
+                                Pharma
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="border: 1px solid #ccc; padding: 8px;">Composition:
+                            </td>
+                            <td th:text="${product.composition}" style="border: 1px solid #ccc; padding: 8px;">
+                                Carisoprodol</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="border: 1px solid #ccc; padding: 8px;">Treatment:</td>
+                            <td th:text="${product.treatment}" style="border: 1px solid #ccc; padding: 8px;">
+                                Muscle
+                                Relaxer</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold" style="border: 1px solid #ccc; padding: 8px;">Form:</td>
+                            <td th:text="${product.form}" style="border: 1px solid #ccc; padding: 8px;">Tablet
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <!-- Price List Table -->
+            <h4 style="color: #2980b9;" th:text="Price+ ' ' +List+ ' ' +of+ ' ' + ${product.name}">Price List</h4>
+            <table style="width: 100%; border-collapse: collapse; text-align: left; margin-top: 10px;">
+                <thead>
+                <tr style="background-color: #f1f1f1;">
+                    <th style="border: 1px solid #ddd; padding: 10px;text-align: center;">Quantity</th>
+                    <th style="border: 1px solid #ddd; padding: 10px;text-align: center;">Price</th>
+                    <th style="border: 1px solid #ddd; padding: 10px;text-align: center;">Payment Link</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="price : ${product.priceList}">
+                    <td style="border: 1px solid #ddd; padding: 10px;text-align: center;"
+                        th:text="${price.quantity} + ' ' + ${price.unit}">100 pills</td>
+                    <td style="border: 1px solid #ddd; padding: 10px;text-align: center;"
+                        th:text="${price.currency} + ' ' + ${price.amount}">$50.00</td>
+                    <td style="border: 1px solid #ddd; padding: 10px;text-align: center;">
+                        <a th:href="${price.paymentLink}"
+                           style="border: 1px solid rgb(11, 111, 188); border-radius: 5px; padding: 5px; background-color: #04AA6D; color: white;"
+                           target="_blank" class="btn btn-primary btn-sm" rel="noopener noreferrer">
+                            Pay Now
+                        </a>
+                    </td>
+
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="padding: 20px">
+            <p style="font-size: 16px; line-height: 1.5">
+                Hey, why just stop at jaw-dropping prices when you can kick back,
+                relax, and order with the ease of a superhero?
+            </p>
+            <p style="font-size: 16px; line-height: 1.5">
+                <strong>Imagine this:</strong> you're chilling at home, sipping your
+                favorite beverage, and voila! Your order is placed without even
+                stepping outside. Yes, you heard that right - a world of convenience
+                awaits at your fingertips.
+            </p>
+            <div style="text-align: center; margin: 10px 0">
+                <img  src="https://rdvision.in/images/getTempImage/5"
+                      alt="Service Image 1" style="height:auto; width:250px" />
+
+                <img src="https://rdvision.in/images/getTempImage/6"
+                     alt="Service Image 2" style="height:auto; width:250px" />
+
+                <img src="https://rdvision.in/images/getTempImage/7"
+                     alt="Service Image 3" style="height:auto; width:250px" />
+            </div>
+            <p style="font-size: 16px; line-height: 1.5">
+                But that's not all - brace yourself for the grand finale! In a
+                whirlwind of <strong>10-12 business days</strong>, your package will
+                land on your doorstep, wrapped in a cloak of discretion that would
+                make even James Bond proud.
+            </p>
+            <div style="text-align: center; margin: 10px 0">
+                <img src="https://rdvision.in/images/getTempImage/8"
+                     alt="Service Image 4" style="height:auto; width:250px" />
+                <img src="https://rdvision.in/images/getTempImage/9"
+                     alt="Service Image 5" style="height:auto; width:250px" />
+                <img src="https://rdvision.in/images/getTempImage/10"
+                     alt="Service Image 6" style="height:auto; width:250px" />
+            </div>
+            <p style="font-size: 16px; line-height: 1.5">
+                Now, for the pièce de résistance: within a mere 24 hours of
+                confirming your order, I'll personally slide into your inbox with a
+                golden key - your very own tracking link. You'll watch in awe as
+                your package dances its way to you, live and direct on
+                <strong>Track17.com</strong>. It's as easy as clicking the link
+                below.
+            </p>
+            <img src="https://rdvision.in/images/getTempImage/11"
+                 alt="Image Loading"
+                 style="width: 100%; max-width: 880px; height: auto; display: block; border: 0;" />
+        </div>
+        <table style="width: 100%; border-collapse: collapse; text-align: center;">
+            <tr>
+                <td style="padding: 10px;">
+                    <img src="https://rdvision.in/images/getTempImage/12"
+                         alt="Image Loading"
+                         style="width: 100%; max-width: 880px; height: auto; display: block; border: 0;" />
+                </td>
+            </tr>
+        </table>
+        <div style="background-color: #666666; color: #797373; padding: 20px; text-align: center; margin-top: 10px;">
+            <div
+                    style="max-width: 600px; margin: 0 auto; background-color: #686565; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+
+                <!-- Footer Content -->
+                <div
+                        style="font-family: Arial, sans-serif; padding: 20px; color: #333; background-color: #f7f7f7; width: 100%; max-width: 600px; margin: auto; border: 1px solid #e0e0e0; border-radius: 5px;">
+                    <!-- Logo -->
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <img src="https://rdvision.in/images/getTempImage/2" alt="Logo"
+                             style="height: 50px; width: auto;">
+                    </div>
+
+
+                    <table
+                            style="width: 100%; max-width: 600px; font-family: Arial, sans-serif; color: #333; border-top: 2px solid #007bff; padding-top: 10px;">
+                        <tr>
+                            <td style="font-size: 14px; color: #555;">Customer Support Manager</td>
+                        </tr>
+
+                        <tr>
+                            <td style="padding: 10px 0;">
+                                <a href="mailto:enquiry@buymed24.com"
+                                   style="color: #007bff; text-decoration: none;">enquiry@buymed24.com</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 14px; color: #555;">Call Us: +1 318-936-6091</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 0;">
+                                <a href="https://buymed24.com"
+                                   style="color: #007bff; text-decoration: none; font-size: 14px;">
+                                    www.buymed24.com
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="padding-bottom: 8px;">
+                                <a href="https://mail.google.com/mail" target="_blank"
+                                   style="color: #0099cc; text-decoration: none;">
+                                    help@buymed24.com
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Call At:</span>
+                                <span style="font-size: 10px; margin-left: 4px;">+1 318-936-6091</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 12px; color: #555; padding-top: 10px;">
+                                Buymed24<br>
+                                Rauna Khurd Cholapur, Varanasi, 221101
+                            </td>
+                        </tr>
+
+                        <!-- Divider and Disclaimer -->
+                        <!--                    <tr>-->
+                        <!--                        <td style="padding-top: 10px; font-size: 12px; color: #888; border-top: 1px solid #ddd;">-->
+                        <!--                            <p style="margin: 5px 0;">This email and any attachments are confidential. If you are not the intended recipient, please delete it and notify the sender immediately.</p>-->
+                        <!--                        </td>-->
+                        <!--                    </tr>-->
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Product Page</title>
+    <style>
+        .button-link {
+            display: inline-block;
+            padding: 10px 15px;
+            color: #fff;
+            background-color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .button-link:hover {
+            background-color: #0056b3;
+        }
+
+        .button-link:active {
+            transform: scale(0.95);
+        }
+
+        .company-bar {
+            background-color: #f0f0f0; /* Light gray background */
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+            border-bottom: 2px solid #007BFF; /* Optional: border at the bottom */
+        }
+
+        header {
+
+            text-align: left;
+            padding: 10px;
+            border-bottom: 2px solid #007BFF; /* Optional: border at the bottom */
+        }
+
+        header h1 {
+            color: rgb(7, 7, 116);
+            margin: 0; /* Remove default margin */
+        }
+
+        header p {
+            margin: 5px 0; /* Add some spacing between paragraphs */
+            color: #333; /* Set color for text */
+        }
+
+   .gallery {
+        display: flex;
+        justify-content: center;
+    }
+    .gallery img {
+        margin: 0 10px;
+        max-width: 100%;
+        height: auto;
+        width: 150px;
+    }
+    </style>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: white; color: #333; text-align: center;">
+
+<!-- Company Header -->
+<table role="presentation" style="width: 100%; padding: 10px 0;">
+    <tr>
+        <td style="text-align: center; padding: 5px;">
+            <img src="https://rdvision.in/images/getTempImage/2" alt="Logo"
+                 style="max-width: 100%; height: auto;" />
+        </td>
+
+    </tr>
+</table>
+<div style="max-width: 800px; margin: 0 auto; background-color: white; border: 2px solid #007BFF; border-radius: 10px; padding: 20px;">
+    <!-- Company Details Bar -->
+    <!--    <div class="company-bar">-->
+    <!--        <span ></span> |-->
+    <!--        <span th:text="${company.email}"></span> |-->
+    <!--        <span th:text="${company.country}"></span>-->
+    <!--    </div>-->
+    <header style="display:flex">
+       <div>
+           <h1 th:text="${company.name}">M/S- RD Vision</h1>
+           <p>Rauna Khurd, Bela, Cholapur, Varanasi, Uttar Pradesh, India, 221101</p>
+           <p>+91-8874957369</p>
+           <p>Email: imt.rdvision@gmail.com, newcare7077@gmail.com</p>
+           <p>GSTIN: 09ITOPS6419C1Z3</p>
+       </div>
+        <div class="gallery">
+           <div style="width:100px"></div>
+            <img th:src="${gallery[2]}" alt="Gallery Image" />
+        </div>
+
+    </header>
+    <!-- Customer and Company Info using Tables -->
+    <table width="100%" cellpadding="10" cellspacing="0" border="0">
+        <tr>
+            <td style="text-align:start">
+                <h2>To</h2>
+                <p><strong>Name:</strong> <span th:text="${customer.name}"></span></p>
+                <p><strong>Email:</strong> <span th:text="${customer.email}"></span></p>
+                <p><strong>Mobile:</strong> <span th:text="${customer.mobile}"></span></p>
+                <p><strong>Address:</strong> <span th:text="${customer.address}"></span></p>
+            </td>
+        </tr>
+    </table>
+    <!-- Image Gallery -->
+    <h2 style="text-align: center;">Trust Badges</h2>
+    <div id="gallery-images" style="text-align: center;">
+        <a href="https://rdvision.tech"><img th:src="${gallery[0]}" alt="Gallery Image" style="margin: 0 10px; max-width: 100%; height: auto; width: 100px;  "/></a>
+        <img th:src="${gallery[1]}" alt="Gallery Image" style="margin: 0 10px; max-width: 100%; height: auto; width: 100px;  "/>
+        <img th:src="${gallery[3]}" alt="Gallery Image" style="margin: 0 10px; max-width: 100%; height: auto; width: 100px;  "/>
+        <img th:src="${gallery[5]}" alt="Gallery Image" style="margin: 0 10px; max-width: 100%; height: auto; width: 100px;  "/>
+        <img th:src="${gallery[6]}" alt="Gallery Image" style="margin: 0 10px; max-width: 100%; height: auto; width: 100px; "/>
+        <img th:src="${gallery[7]}" alt="Gallery Image" style="margin: 0 10px; max-width: 100%; height: auto; width: 150px; "/>
+    </div>
+
+    <!-- Product Table -->
+    <h2>Order information</h2>
+    <table width="100%" cellpadding="10" cellspacing="0" border="1" style="border-collapse: collapse;">
+        <thead>
+        <tr>
+            <th style="background-color: #b3e0f7; padding: 8px;">Product Name</th>
+            <th style="background-color: #b3e0f7; padding: 8px;">Image</th>
+            <th style="background-color: #b3e0f7; padding: 8px;">Description</th>
+            <th style="background-color: #b3e0f7; padding: 8px;">Quantity</th>
+<!--            <th style="background-color: #b3e0f7; padding: 8px;">Brucher</th>-->
+<!--            <th style="background-color: #b3e0f7; padding: 8px;">Price/Pill</th> &lt;!&ndash; New column header &ndash;&gt;-->
+            <th style="background-color: #b3e0f7; padding: 8px;">Price(<span th:text="${ratings.currency}"></span>)</th>
+
+        </tr>
+        </thead>
+        <tbody th:each="product : ${products}">
+        <tr>
+            <td th:text="${product.name}"></td>
+            <td><img th:src="${product.image}" alt="Product" style="width: 50px;"/></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.quantity}"></td>
+            <td th:text="${product.price}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+    <div style="margin-top: 20px; font-size: 20px; font-weight: bold; color: #007BFF;">
+        Total Price:  <span th:text="${ratings.currency}"></span>  <span th:text="${total_price}"></span>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <a class="button-link" th:href="${ratings.paymentLink}"
+           style="color: blue; border:2px solid blue;padding:3px; border-radius:5px; text-decoration: none; font-weight: bold;">
+            Click to view and pay
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-width: 600px;
+            margin: auto;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        .content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 0 0 5px 5px;
+        }
+        .tracking-details {
+            margin-top: 20px;
+        }
+        .tracking-details p {
+            margin: 5px 0;
+        }
+        .event-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .event-table th, .event-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .event-table th {
+            background-color: #f2f2f2;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #888;
+        }
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            .header, .footer {
+                font-size: 14px;
+            }
+            .content p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h2>Package Tracking Update</h2>
+    </header>
+    <main class="content">
+        <p>Dear Customer,</p>
+        <p>Your package with tracking number <strong>{{tracking_number}}</strong> shipped by <strong>{{carrier_name}}</strong> has an update.</p>
+
+        <div class="tracking-details">
+            <h3>Latest Status:</h3>
+            <p>Status: <strong>{{status}}</strong></p>
+            <p>Sub Status: <strong>{{sub_status}}</strong></p>
+            <p>Last Updated: <strong>{{status_time}}</strong></p>
+            <p>Signed by: <strong>{{signed_by}}</strong></p>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; {{year}} buymed24.com. All rights reserved.</p>
+    </footer>
+</div>
+</body>
+</html>

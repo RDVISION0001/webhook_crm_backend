@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Inquiry Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8e1; /* Light yellow background */
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px;
+        }
+        .header {
+            background-color: #ffb300; /* Bright yellow header */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 26px;
+            margin: 0;
+        }
+        .details-container {
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .details-container h3, .company-info h3 {
+            font-size: 20px;
+            color: #ffb300; /* Yellow color for headings */
+        }
+        .inquiry-details, .company-info {
+            width: 100%;
+        }
+        .footer {
+            background-color: #f9fbe7; /* Light yellow footer */
+            color: #777;
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+        }
+        .badge {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px 10px;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 5px;
+        }
+        .product {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ececec;
+            border-radius: 5px;
+            text-align: left;
+        }
+        .btn {
+            background-color: #ffb300; /* Yellow button */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #ffa000; /* Darker yellow on hover */
+        }
+        .product img {
+            max-width: 100px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Inquiry Received</h1>
+    </div>
+
+    <h2 style="text-align: center;">Trust Badges</h2>
+    <div id="gallery-images" style="text-align: center;">
+        <img th:src="${gallery[0]}" alt="Gallery Image" style="margin: 0 10px; max-width: 50px; border-radius: 50%; border: 2px solid #ddd;"/>
+        <img th:src="${gallery[1]}" alt="Gallery Image" style="margin: 0 10px; max-width: 50px; border-radius: 50%; border: 2px solid #ddd;"/>
+        <img th:src="${gallery[2]}" alt="Gallery Image" style="margin: 0 10px; max-width: 50px; border-radius: 50%; border: 2px solid #ddd;"/>
+        <img th:src="${gallery[3]}" alt="Gallery Image" style="margin: 0 10px; max-width: 50px; border-radius: 50%; border: 2px solid #ddd;"/>
+        <img th:src="${gallery[4]}" alt="Gallery Image" style="margin: 0 10px; max-width: 50px; border-radius: 50%; border: 2px solid #ddd;"/>
+        <img th:src="${gallery[5]}" alt="Gallery Image" style="margin: 0 10px; max-width: 50px; border-radius: 50%; border: 2px solid #ddd;"/>
+    </div>
+
+    <div id="greeting">
+        <h3>Hey, <span th:text="${customerName}"></span></h3>
+    </div>
+
+    <p>Thank you for reaching out to us. We have received your inquiry and will get back to you shortly.</p>
+
+    <div class="details-container">
+        <div class="inquiry-details">
+            <h3>Your Inquiry Details:</h3>
+            <p><strong>Name:</strong> <span th:text="${customerName}"></span></p>
+            <p><strong>Email:</strong> <span th:text="${customerEmail}"></span></p>
+            <p><strong>Address:</strong> <span th:text="${customerAddress}"></span></p>
+        </div>
+
+        <div class="company-info">
+            <h3>Company Information:</h3>
+            <p><strong>Company Name:</strong> buymed24</p>
+            <p><strong>Email:</strong> enquiry@buymed24.com</p>
+            <p><strong>Website:</strong> buymed24.com</p>
+        </div>
+    </div>
+
+    <div class="inquiry-product">
+        <h3>Inquiry About:</h3>
+        <p><strong>Subject:</strong> <span th:text="${inquirySubject}"></span></p>
+        <p><strong>Product Name:</strong> <span th:text="${productName}"></span></p>
+    </div>
+
+    <div class="product-details">
+        <h3>Product Details:</h3>
+        <div id="product-list">
+            <div class="product" th:each="product : ${products}">
+                <h4 th:text="${product.name}"></h4>
+                <img th:src="${product.image}" alt="${product.name}" style="border-radius: 5px;"/>
+                <p th:text="${product.description}"></p>
+                <p><strong>Price:</strong> <span th:text="${product.price}"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <h3>Customer Reviews:</h3>
+    <div>
+        <span class="badge">4.8/5</span>
+        <span class="badge">22545 Reviews</span>
+        <span class="badge">Top Rated</span>
+    </div>
+
+    <div class="footer">
+        <p>If you have any urgent questions, please contact our support team at enquiry@buymed24.com</p>
+        <p>Thank You!</p>
+    </div>
+</div>
+
+<script>
+    const greeting = `Hey, ${/* Use JS to greet or remove if unnecessary */}`;
+    document.getElementById('greeting').innerHTML = `<h3>${greeting}</h3>`;
+</script>
+</body>
+</html>

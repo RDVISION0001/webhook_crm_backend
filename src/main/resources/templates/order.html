@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Order Confirmation ✔️</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f9f9f9; color: #333; text-align: center;">
+
+<div style="max-width: 800px; margin: 0 auto; background-color: white; border: 2px solid #28a745; border-radius: 10px; padding: 20px;">
+    <h1 style="color: #28a745;">Order Confirmation ✔️</h1>
+
+    <div style="display: flex; justify-content: center; margin-bottom: 20px; width:100%;">
+        <!-- Customer Information -->
+        <div style="flex: 1; margin-right: 20px;">
+            <h2>Customer Information</h2>
+            <p><strong>Name:</strong> <span th:text="${customer.name}"></span></p>
+            <p><strong>Email:</strong> <span th:text="${customer.email}"></span></p>
+            <p><strong>Mobile:</strong> <span th:text="${customer.mobile}"></span></p>
+            <p><strong>Address:</strong> <span th:text="${customer.address}"></span></p>
+        </div>
+
+        <!-- Company Information -->
+        <div style="flex: 1; margin-left: 20px;">
+            <h2>Company Information</h2>
+            <p><strong>Company Name:</strong> <span th:text="${company.name}"></span></p>
+            <p><strong>Email:</strong> <span th:text="${company.email}"></span></p>
+            <p><strong>Country:</strong> <span th:text="${company.country}"></span></p>
+        </div>
+    </div>
+
+    <!-- Order Summary -->
+    <h2>Order Summary</h2>
+    <table width="100%" cellpadding="10" cellspacing="0" border="1" style="border-collapse: collapse;">
+        <thead>
+        <tr>
+            <th style="background-color: #d4edda; padding: 8px;">Product Name</th>
+            <th style="background-color: #d4edda; padding: 8px;">Image</th>
+            <th style="background-color: #d4edda; padding: 8px;">Description</th>
+            <th style="background-color: #d4edda; padding: 8px;">Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.name}"></td>
+            <td><img th:src="${product.image}" alt="Product image" style="width: 50px;"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${#numbers.formatDecimal(product.price, 1, 2)}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div style="margin-top: 20px; font-size: 20px; font-weight: bold; color: #28a745;">
+        Total Price: $<span th:text="${total_price}"></span>
+    </div>
+
+    <h2>Thank You for Your Order!</h2>
+    <p>Your order will be processed shortly. If you have any questions, please contact our support.</p>
+</div>
+</body>
+</html>
