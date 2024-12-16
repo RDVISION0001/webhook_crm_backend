@@ -17,7 +17,7 @@ import java.util.Collections;
 public class GoogleSheetsService {
 
     private static final String APPLICATION_NAME = "Spring Boot Google Sheets Integration";
-    private static final String CREDENTIALS_FILE_PATH = "/springboot-to-excel-f34ef5fd721e.json"; // Ensure the path is correct for your resources
+    private static final String CREDENTIALS_FILE_PATH = "/springboot-to-excel-8407e49da553.json"; // Ensure the path is correct for your resources
 
     public Sheets getSheetsService() throws GeneralSecurityException, IOException {
         // Load the credentials file from the resources folder
